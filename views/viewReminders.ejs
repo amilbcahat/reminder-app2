@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>View Reminders</title>
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Include Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="mb-4">View Your Reminders</h1>
+
+      <table class="table table-bordered mt-4">
+        <thead>
+          <tr>
+            <th>Reminder Subject</th>
+            <th>Reminder Description</th>
+            <th>Email Address</th>
+            <th>Contact No</th>
+            <th>SMS No</th>
+            <th>Status</th>
+            <!-- <th>Recurrence Frequency</th>
+            <th>Check</th> -->
+          </tr>
+        </thead>
+
+        <tbody>
+          <% reminders.forEach(function(reminder) { %>
+          <tr>
+            <td><%- reminder.subject%></td>
+            <td><%- reminder.description%></td>
+            <td><%- reminder.email%></td>
+            <td><%- reminder.contactNo%></td>
+            <td><%- reminder.smsNo%></td>
+            <td><%- reminder.active%></td>
+          </tr>
+          <!-- Add more reminder rows as needed -->
+          <% })%>
+        </tbody>
+      </table>
+    </div>
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
