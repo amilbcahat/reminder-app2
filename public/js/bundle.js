@@ -28612,7 +28612,7 @@ if (deletereminderForm) {
 //     );
 //   });
 // }
-},{"@babel/polyfill":5,"axios":6,"./login":2,"./signup":3,"./createReminder":4}],432:[function(require,module,exports) {
+},{"@babel/polyfill":5,"axios":6,"./login":2,"./signup":3,"./createReminder":4}],434:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -28782,5 +28782,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[432,1], null)
+},{}]},{},[434,1], null)
 //# sourceMappingURL=/bundle.map
