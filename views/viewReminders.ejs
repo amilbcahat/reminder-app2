@@ -20,6 +20,8 @@
       <table class="table table-bordered mt-4">
         <thead>
           <tr>
+            <th>Reminder Id</th>
+            <th>Reminder Date</th>
             <th>Reminder Subject</th>
             <th>Reminder Description</th>
             <th>Email Address</th>
@@ -34,12 +36,18 @@
         <tbody>
           <% reminders.forEach(function(reminder) { %>
           <tr>
+            <td><%- reminder.id%></td>
+            <td><%- reminder.date %></td>
             <td><%- reminder.subject%></td>
             <td><%- reminder.description%></td>
             <td><%- reminder.email%></td>
             <td><%- reminder.contactNo%></td>
             <td><%- reminder.smsNo%></td>
-            <td><%- reminder.active%></td>
+            <% if(reminder.active){ %>
+            <td>Active</td>
+            <% } %> <% if(!reminder.active){ %>
+            <td>InActive</td>
+            <% } %>
           </tr>
           <!-- Add more reminder rows as needed -->
           <% })%>

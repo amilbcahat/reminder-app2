@@ -70,3 +70,45 @@ exports.viewReminders = catchAsync(async (req, res, next) => {
     reminders: reminders,
   });
 });
+
+exports.deleteReminder = catchAsync(async (req, res, next) => {
+  const reminders = await Reminder.find({
+    created_by: req.user.id,
+  });
+
+  if (!reminders) {
+    console.log("No reminders");
+  }
+  res.status(200).render("deleteReminder.ejs", {
+    title: "Edit Your resume",
+    reminders: reminders,
+  });
+});
+
+exports.disableReminder = catchAsync(async (req, res, next) => {
+  const reminders = await Reminder.find({
+    created_by: req.user.id,
+  });
+
+  if (!reminders) {
+    console.log("No reminders");
+  }
+  res.status(200).render("disableReminder.ejs", {
+    title: "Disable Your resume",
+    reminders: reminders,
+  });
+});
+
+exports.enableReminder = catchAsync(async (req, res, next) => {
+  const reminders = await Reminder.find({
+    created_by: req.user.id,
+  });
+
+  if (!reminders) {
+    console.log("No reminders");
+  }
+  res.status(200).render("enableReminder.ejs", {
+    title: "Disable Your resume",
+    reminders: reminders,
+  });
+});

@@ -88,7 +88,13 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
 
   if (!token) {
-    return next(new AppError("You are not logged in ", 401));
+    // return next(new AppError("You are not logged in ", 401));
+    res.end(
+      "You are not logged in !...Go to http://localhost:8000/login to signin/register first"
+    );
+    // setTimeout(() => {
+    //   location.assign("/login");
+    // }, 1500);
   }
   //2) Validate the token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
@@ -152,7 +158,5 @@ exports.logout = (req, res) => {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
   });
-  res.status(200).json({
-    status: "success",
-  });
+  res.redirect("/");
 };

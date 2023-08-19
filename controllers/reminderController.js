@@ -26,15 +26,24 @@ exports.getAllReminders = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteReminder = catchAsync(async (req, res, next) => {
-  const resume = await Reminder.findByIdAndDelete(req.params.reminderID);
+  const reminder = await Reminder.remove({
+    subject: req.body.subject,
+  });
 
-  if (!resume) {
+  const reminder2 = await Reminder.remove({
+    description: req.body.description,
+  });
+
+  if (!reminder) {
     return next(new AppError("No doc found with that ID", 404));
   }
 
-  if (resume.created_by != req.user.id) {
-    return next(new AppError("Current User cant access this resource", 403));
+  if (!reminder2) {
+    return next(new AppError("No doc found with that ID", 404));
   }
+  //   if (resume.created_by != req.user.id) {
+  //     return next(new AppError("Current User cant access this resource", 403));
+  //   }
 
   res.status(200).json({
     status: "success",

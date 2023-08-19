@@ -6,7 +6,7 @@ export const hideAlert = () => {
 // type is 'success' or 'error'
 export const showAlert = (type, msg, time = 7) => {
   hideAlert();
-  const markup = `<center><div class="alert alert--${type}">${msg}</div></center>`;
+  const markup = `<center><div class="alert alert--success">${msg}</div></center>`;
   document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
   window.setTimeout(hideAlert, time * 1000);
 };

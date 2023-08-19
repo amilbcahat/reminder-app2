@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reminder Modification</title>
+    <!-- Add Bootstrap CSS link -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <h1>Delete Reminder</h1>
+      <form class = "form--deletereminder">
+        <!-- <div class="form-group">
+          <label for="date">Select Date:</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="date"
+              name="date"
+              placeholder="Choose a date"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fa fa-calendar"></i>
+              </span>
+            </div>
+          </div>
+        </div> -->
+        <h3>If there are no reminder , first create one ! </h3>
+        <div class="form-group">
+          <label for="subject">Select Subject:</label>
+          <select class="form-control" id="subject" name="subject">
+            <!-- Populate the options with your subject list -->
+            <% reminders.forEach(function(reminder) { %>
+
+            <option value="subject1"><%- reminder.subject %></option>
+            <% })%>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="reminders">Reminders:</label>
+          <select class="form-control" id="reminders" name="reminders">
+            <!-- Populate the options with reminder names and descriptions -->
+            <% reminders.forEach(function(reminder) { %>
+            
+            <option value="reminder1"><%- reminder.description %></option>
+            <% })%>
+            <!-- <option value="reminder2">Reminder 2 - Description...</option> -->
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+
+        <!-- <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea
+            class="form-control"
+            id="description"
+            name="description"
+            readonly
+          ></textarea> -->
+          <!-- You can populate the textarea with the selected reminder's description via JavaScript -->
+        </div>
+<center><button class="btn btn-primary btn-deletereminder">Delete Reminder</button></center>
+        
+      </form>
+      <center><br>
+        <a href="/logout">Log out</a></center>
+
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery scripts -->
+    <script src="http://localhost:8000/js/bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

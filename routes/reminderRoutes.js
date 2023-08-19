@@ -9,11 +9,11 @@ router.use(authController.protect);
 router
   .route("/")
   .post(reminderController.createReminder)
-  .get(reminderController.getAllReminders);
+  .get(reminderController.getAllReminders)
+  .delete(authController.protect, reminderController.deleteReminder);
 
 router
   .route("/:reminderID")
-  .delete(reminderController.deleteReminder)
   .get(reminderController.getAReminder)
   .post(reminderController.modifyReminder);
 module.exports = router;

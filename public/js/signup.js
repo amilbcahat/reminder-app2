@@ -13,13 +13,11 @@ export const signup = async (name, email, password, passwordConfirm) => {
         passwordConfirm: passwordConfirm,
       },
     });
-    s;
-    if (res.data.status === "success") {
-      showAlert("success", "Signed up successfully");
-      window.setTimeout(() => {
-        location.assign("/dashboard");
-      }, 1500);
-    }
+
+    showAlert("success", "Signed up successfully");
+    window.setTimeout(() => {
+      location.assign("/dashboard");
+    }, 1500);
   } catch (err) {
     showAlert("error", err.response.data.message);
   }

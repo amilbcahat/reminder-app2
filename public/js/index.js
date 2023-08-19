@@ -3,13 +3,16 @@ import axios from "axios";
 
 import { login, logout } from "./login";
 import { signup } from "./signup";
-import { createReminder, editReminder } from "./createReminder";
+import { createReminder, editReminder, deleteReminder } from "./createReminder";
 // import { deleteResume, editResume } from "./updateResume";
 
 const loginForm = document.querySelector(".form--login");
 const signupForm = document.querySelector(".form--signup");
 const reminderForm = document.querySelector(".form--reminder");
 const editreminderForm = document.querySelector(".form--editreminder");
+const deletereminderForm = document.querySelector(".form--deletereminder");
+const disableereminderForm = document.querySelector(".form--disablereminder");
+const enablereminderForm = document.querySelector(".form--enablereminder");
 
 // const resumeForm = document.querySelector(".form--resume");
 // const btnDelete = document.querySelector(".btn--delete");
@@ -42,7 +45,7 @@ if (signupForm) {
 
 if (reminderForm) {
   document
-    .querySelector(".btn-editreminder")
+    .querySelector(".btn-reminder")
     .addEventListener("click", function (e) {
       e.preventDefault();
 
@@ -53,32 +56,142 @@ if (reminderForm) {
       const contactNo = document.querySelector("#contactNo").value;
       const smsNo = document.querySelector("#smsNo").value;
 
-      const formData = new FormData();
-      formData.append("date", date);
-      formData.append("subject", subject);
-      formData.append("description", description);
-      formData.append("email", email);
-      formData.append("contactNo", contactNo);
-      formData.append("smsNo", smsNo);
-
       if (document.querySelector("#recur7Days").checked) {
-        formData.append("recur7Days", "true");
+        var recur7Days = "true";
       }
       if (document.querySelector("#recur5Days").checked) {
-        formData.append("recur5Days", "true");
+        var recur5Days = "true";
       }
       if (document.querySelector("#recur3Days").checked) {
-        formData.append("recur3Days", "true");
+        var recur3Days = "true";
       }
       if (document.querySelector("#recur2Days").checked) {
-        formData.append("recur2Days", "true");
+        var recur2Days = "true";
+      }
+      // data = {
+      //   date: date,
+      //   subject: subject,
+      //   description: description,
+      //   email: email,
+      //   contactNo: contactNo,
+      //   smsNo: smsNo,
+      // };
+      // const formData = new FormData();
+      // formData.append("date", date);
+      // formData.append("subject", subject);
+      // formData.append("description", description);
+      // formData.append("email", email);
+      // formData.append("contactNo", contactNo);
+      // formData.append("smsNo", smsNo);
+      // Display the FormData values (for demonstration purposes)
+      // for (let [key, value] of data) {
+      //   console.log(key, value);
+      // }
+      // createReminder(formData, "data");
+      createReminder({
+        date,
+        subject,
+        description,
+        email,
+        contactNo,
+        smsNo,
+        recur7Days,
+        recur5Days,
+        recur3Days,
+        recur2Days,
+      });
+    });
+}
+
+if (disableereminderForm) {
+  document
+    .querySelector(".btn-disablereminder")
+    .addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const date = document.querySelector("#date").value;
+      const subject = document.querySelector("#subject").value;
+      const description = document.querySelector("#description").value;
+      const email = document.querySelector("#email").value;
+      const contactNo = document.querySelector("#contactNo").value;
+      const smsNo = document.querySelector("#smsNo").value;
+      const active = "false";
+      if (document.querySelector("#recur7Days").checked) {
+        var recur7Days = "true";
+      }
+      if (document.querySelector("#recur5Days").checked) {
+        var recur5Days = "true";
+      }
+      if (document.querySelector("#recur3Days").checked) {
+        var recur3Days = "true";
+      }
+      if (document.querySelector("#recur2Days").checked) {
+        var recur2Days = "true";
       }
 
       // Display the FormData values (for demonstration purposes)
-      for (let [key, value] of formData.entries()) {
-        console.log(key, value);
+      // for (let [key, value] of formData.entries()) {
+      //   console.log(key, value);
+      // }
+      createReminder({
+        date,
+        subject,
+        description,
+        email,
+        contactNo,
+        smsNo,
+        recur7Days,
+        recur5Days,
+        recur3Days,
+        recur2Days,
+        active,
+      });
+    });
+}
+
+if (enablereminderForm) {
+  document
+    .querySelector(".btn-enablereminder")
+    .addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const date = document.querySelector("#date").value;
+      const subject = document.querySelector("#subject").value;
+      const description = document.querySelector("#description").value;
+      const email = document.querySelector("#email").value;
+      const contactNo = document.querySelector("#contactNo").value;
+      const smsNo = document.querySelector("#smsNo").value;
+      const active = "true";
+      if (document.querySelector("#recur7Days").checked) {
+        var recur7Days = "true";
       }
-      createReminder(formData, "data");
+      if (document.querySelector("#recur5Days").checked) {
+        var recur5Days = "true";
+      }
+      if (document.querySelector("#recur3Days").checked) {
+        var recur3Days = "true";
+      }
+      if (document.querySelector("#recur2Days").checked) {
+        var recur2Days = "true";
+      }
+
+      // Display the FormData values (for demonstration purposes)
+      // for (let [key, value] of formData.entries()) {
+      //   console.log(key, value);
+      // }
+      createReminder({
+        date,
+        subject,
+        description,
+        email,
+        contactNo,
+        smsNo,
+        recur7Days,
+        recur5Days,
+        recur3Days,
+        recur2Days,
+        active,
+      });
     });
 }
 
@@ -96,32 +209,57 @@ if (editreminderForm) {
       const smsNo = document.querySelector("#smsNo").value;
       const reminderID = document.querySelector("#reminderID").value;
 
-      const formData = new FormData();
-      formData.append("date", date);
-      formData.append("subject", subject);
-      formData.append("description", description);
-      formData.append("email", email);
-      formData.append("contactNo", contactNo);
-      formData.append("smsNo", smsNo);
-      formData.append("reminderID", reminderID);
       if (document.querySelector("#recur7Days").checked) {
-        formData.append("recur7Days", "true");
+        var recur7Days = "true";
       }
       if (document.querySelector("#recur5Days").checked) {
-        formData.append("recur5Days", "true");
+        var recur5Days = "true";
       }
       if (document.querySelector("#recur3Days").checked) {
-        formData.append("recur3Days", "true");
+        var recur3Days = "true";
       }
       if (document.querySelector("#recur2Days").checked) {
-        formData.append("recur2Days", "true");
+        var recur2Days = "true";
       }
+
+      // Display the FormData values (for demonstration purposes)
+      // for (let [key, value] of formData.entries()) {
+      //   console.log(key, value);
+      // }
+      editReminder({
+        date,
+        subject,
+        description,
+        email,
+        contactNo,
+        smsNo,
+        recur7Days,
+        recur5Days,
+        recur3Days,
+        recur2Days,
+        reminderID,
+      });
+    });
+}
+
+if (deletereminderForm) {
+  document
+    .querySelector(".btn-deletereminder")
+    .addEventListener("click", function (e) {
+      e.preventDefault();
+
+      var subject = document.getElementById("subject").value;
+      var reminders = document.getElementById("reminders").value;
+
+      const formData = new FormData();
+      formData.append("subject", subject);
+      formData.append("description", reminders);
 
       // Display the FormData values (for demonstration purposes)
       for (let [key, value] of formData.entries()) {
         console.log(key, value);
       }
-      editReminder(formData, "data");
+      deleteReminder(formData, "data");
     });
 }
 
