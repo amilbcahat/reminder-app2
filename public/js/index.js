@@ -249,17 +249,20 @@ if (deletereminderForm) {
       e.preventDefault();
 
       var subject = document.getElementById("subject").value;
-      var reminders = document.getElementById("reminders").value;
+      var description = document.getElementById("description").value;
 
-      const formData = new FormData();
-      formData.append("subject", subject);
-      formData.append("description", reminders);
+      // const formData = new FormData();
+      // formData.append("subject", subject);
+      // formData.append("description", reminders);
 
       // Display the FormData values (for demonstration purposes)
-      for (let [key, value] of formData.entries()) {
-        console.log(key, value);
-      }
-      deleteReminder(formData, "data");
+      // for (let [key, value] of formData.entries()) {
+      //   console.log(key, value);
+      // }
+      deleteReminder({
+        subject: subject,
+        description: description,
+      });
     });
 }
 

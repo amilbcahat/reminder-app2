@@ -28263,8 +28263,6 @@ var deleteReminder = exports.deleteReminder = function () {
 },{"axios":6,"./alerts":7}],1:[function(require,module,exports) {
 "use strict";
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
 require("@babel/polyfill");
 
 var _axios = require("axios");
@@ -28514,44 +28512,20 @@ if (deletereminderForm) {
     e.preventDefault();
 
     var subject = document.getElementById("subject").value;
-    var reminders = document.getElementById("reminders").value;
+    var description = document.getElementById("description").value;
 
-    var formData = new FormData();
-    formData.append("subject", subject);
-    formData.append("description", reminders);
+    // const formData = new FormData();
+    // formData.append("subject", subject);
+    // formData.append("description", reminders);
 
     // Display the FormData values (for demonstration purposes)
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-      for (var _iterator = formData.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var _ref = _step.value;
-
-        var _ref2 = _slicedToArray(_ref, 2);
-
-        var key = _ref2[0];
-        var value = _ref2[1];
-
-        console.log(key, value);
-      }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
-    }
-
-    (0, _createReminder.deleteReminder)(formData, "data");
+    // for (let [key, value] of formData.entries()) {
+    //   console.log(key, value);
+    // }
+    (0, _createReminder.deleteReminder)({
+      subject: subject,
+      description: description
+    });
   });
 }
 
@@ -28638,7 +28612,7 @@ if (deletereminderForm) {
 //     );
 //   });
 // }
-},{"@babel/polyfill":5,"axios":6,"./login":2,"./signup":3,"./createReminder":4}],431:[function(require,module,exports) {
+},{"@babel/polyfill":5,"axios":6,"./login":2,"./signup":3,"./createReminder":4}],432:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -28808,5 +28782,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[431,1], null)
+},{}]},{},[432,1], null)
 //# sourceMappingURL=/bundle.map
