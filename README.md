@@ -1,6 +1,6 @@
 ﻿# reminder-app2
 
-A Reminder App made with Node.js , Express.js , EJS templates and MongoDB
+A Reminder App made with Node.js , Express.js , EJS templates and MongoDB by Amol Verma
 
 Steps -
 
